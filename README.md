@@ -1,2 +1,2 @@
 # Vibeshot-App
-Vibeshot is a social networking idea for a Java capstone project which is similar to Instagram.
+Vibeshot is a social media platform designed to emulate the functionality and user experience of Instagram.
