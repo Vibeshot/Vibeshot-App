@@ -1,2 +1,2 @@
 # Vibeshot-App
-Vibeshot is a social media platform designed to emulate the functionality and user experience of Instagram.
+Vibeshot is a social media platform designed to emulate the functionality and user experience of Instagram. As a capstone project, the aim is to develop a fully functional platform that enables users to share photos and videos, interact with others, and explore content in a visually engaging manner. The project will focus on creating an intuitive user interface, implementing key features such as profiles, news feeds, likes, comments, and direct messaging, and ensuring robust security measures to protect user data and privacy.
