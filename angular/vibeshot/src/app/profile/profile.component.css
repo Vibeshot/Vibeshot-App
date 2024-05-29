@@ -1,0 +1,35 @@
+div {
+    margin: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #ff0000;
+}
+
+p {
+    font-size: 24px;
+    color: #33ff00;
+}
+
+p {
+    font-size: 24px;
+    color: #00646b;
+}
+
+h2 {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #f9f9f9;
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ec8989;
+  }
