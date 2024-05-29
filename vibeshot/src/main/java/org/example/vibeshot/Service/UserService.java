@@ -10,6 +10,7 @@ import java.util.List;
 
 @Service
 public class UserService {
+
     @Autowired
     private UserRepository userRepository;
 
@@ -23,5 +24,9 @@ public class UserService {
     public User saveUser(User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
+    }
+
+    public User findByUsername(String username){
+        return userRepository.findByUsername(username);
     }
 }
