@@ -1,0 +1,9 @@
+<div *ngIf="user">
+    <h1>{{ user.name }}</h1>
+    <p>{{ user.bio }}</p>
+    <h2>Posts</h2>
+    <div *ngFor="let post of user.posts">
+      <p>{{ post.content }}</p>
+    </div>
+  </div>
+  
