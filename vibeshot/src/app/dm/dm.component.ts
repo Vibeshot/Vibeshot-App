@@ -11,8 +11,10 @@ export class DmComponent {
   constructor() { }
 
   sendMessage() {
+    // Handle sending the message (e.g., send it to the backend)
     console.log('Message sent:', this.message);
-    // code to send message to backend goes here
+    // You can add code here to send the message to the backend
+    // For now, let's just log it to the console
     this.message = '';
   }
 

@@ -10,7 +10,7 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   getUser(username: string): Observable<any> {
-    return this.http.get(`/api/users/${username}`);
+    return this.http.get(`/user/${username}`);
   }
 
 

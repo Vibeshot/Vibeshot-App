@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'http://your-backend-api-url';  // Replace with your backend URL
+  private baseUrl = 'http://localhost:3306/vibeshotdb';  // Replace with your backend URL
 
   constructor(private http: HttpClient) { }
 
   register(username: string, email: string, password: string): Observable<any> {
-    return this.http.post<any>('/api/register', { username, email, password });
+    return this.http.post<any>('/user', { username, email, password });
   }
 
   login(username: string, password: string): Observable<any> {
