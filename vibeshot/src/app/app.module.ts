@@ -16,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProfileService } from 'c:/Users/Thomas/Documents/Vibeshot/vibeshot/src/app/services/profile.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   providers: [
     provideClientHydration(),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    ProfileService
   ],
   bootstrap: [AppComponent]
 })

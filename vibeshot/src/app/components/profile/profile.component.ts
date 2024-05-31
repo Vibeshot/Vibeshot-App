@@ -1,7 +1,8 @@
 // src/app/profile/profile.component.ts
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { UserService } from '../../services/user.service'; // Assuming you have a UserService to fetch user data
+import { ProfileService } from 'c:/Users/Thomas/Documents/Vibeshot/vibeshot/src/app/services/profile.service';
+import { Profile } from 'c:/Users/Thomas/Documents/Vibeshot/vibeshot/src/app/models/profile.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -9,26 +10,47 @@ import { UserService } from '../../services/user.service'; // Assuming you have 
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  username!: string; // Non-null assertion operator
-  user: any;
+  profile!: Profile;
+  editProfileForm: FormGroup;
+  editMode: boolean = false;
 
-  constructor(private route: ActivatedRoute, private userService: UserService) {}
+  constructor(private profileService: ProfileService, private fb: FormBuilder) {
+    this.editProfileForm = this.fb.group({
+      name: ['', Validators.required],
+      bio: ['', Validators.required]
+    });
+  }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      this.username = params.get('username')!;
-      if (this.username) {
-        this.loadUserProfile();
-      } else {
-        console.error('Username is null');
-      }
+    this.profileService.getProfile().subscribe(profile => {
+      this.profile = profile;
+      this.editProfileForm.setValue({
+        name: profile.name,
+        bio: profile.bio
+      });
     });
   }
 
-  loadUserProfile(): void {
-    this.userService.getUser(this.username).subscribe(user => {
-      this.user = user;
-    });
+  toggleEditMode(): void {
+    this.editMode = !this.editMode;
+  }
+
+  saveProfile(): void {
+    if (this.editProfileForm.valid) {
+      const updatedProfile: Profile = {
+        ...this.profile,
+        ...this.editProfileForm.value
+      };
+      this.profileService.updateProfile(updatedProfile);
+      this.profile = updatedProfile;
+      this.editMode = false;
+    }
+  }
+
+  likePost(postId: number): void {
+    const post = this.profile.posts.find(p => p.id === postId);
+    if (post) {
+      post.likes++;
+    }
   }
 }
-
