@@ -13,6 +13,7 @@ export interface Post {
   }
   
   export interface Profile {
+    id: number;
     name: string;
     bio: string;
     posts: Post[];

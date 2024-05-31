@@ -1,8 +1,8 @@
-// src/app/profile/profile.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../../services/profile.service';
 import { Profile } from '../../models/profile.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
   editProfileForm: FormGroup;
   editMode: boolean = false;
 
-  constructor(private profileService: ProfileService, private fb: FormBuilder) {
+  constructor(private authService: AuthService, private profileService: ProfileService, private fb: FormBuilder) {
     this.editProfileForm = this.fb.group({
       name: ['', Validators.required],
       bio: ['', Validators.required]

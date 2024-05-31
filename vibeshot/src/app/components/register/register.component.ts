@@ -12,7 +12,7 @@ import { ApiResponse } from '../../models/api-response.model';
 export class RegisterComponent {
   registerForm: FormGroup;
   submitted = false;
-  errorMessage = '';
+  errorMessage: string | null = null;
 
   constructor(
     private formBuilder: FormBuilder,

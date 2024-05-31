@@ -17,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileService } from './services/profile.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ProfileService } from './services/profile.service';
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
-    ProfileService
+    ProfileService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
