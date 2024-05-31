@@ -1,4 +1,3 @@
-// src/app/services/profile.service.ts
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Profile } from '../models/profile.model';

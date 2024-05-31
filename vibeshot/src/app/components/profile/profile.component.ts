@@ -1,7 +1,7 @@
 // src/app/profile/profile.component.ts
 import { Component, OnInit } from '@angular/core';
-import { ProfileService } from 'c:/Users/Thomas/Documents/Vibeshot/vibeshot/src/app/services/profile.service';
-import { Profile } from 'c:/Users/Thomas/Documents/Vibeshot/vibeshot/src/app/models/profile.model';
+import { ProfileService } from '../../services/profile.service';
+import { Profile } from '../../models/profile.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
