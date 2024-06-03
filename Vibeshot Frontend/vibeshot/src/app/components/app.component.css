@@ -1,0 +1,23 @@
+nav {
+    background-color: #121212; /* Use the primary color defined in your global variables */
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+  }
+  
+  nav a:hover {
+    color: lightgray;
+  }
+  
+  /* Apply styles to the router outlet content */
+  .router-outlet-container {
+    padding: 20px; /* Add padding around the router outlet content */
+  }
+  

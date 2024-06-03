@@ -1,0 +1,32 @@
+<div class = "container">
+  <form [formGroup]="createPostForm" (ngSubmit)="createPost()">
+    <div class="form-group">
+      <textarea formControlName="content" class="form-control" placeholder="What's on your mind?"></textarea>
+      <div *ngIf="createPostForm.controls['content'].invalid && createPostForm.controls['content'].touched" class="text-danger">
+        Content is required
+      </div>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Post</button>
+    </div>
+  </form>
+
+  <div *ngFor="let post of posts">
+    <div class="post">
+      <h1>{{ post.title }}</h1>
+      <p>{{ post.content }}</p>
+      <p><strong>{{ post.username }}</strong></p>
+      <button (click)="likePost(post.id)">Like ({{ post.likes }})</button>
+      <div>
+        <h4>Comments</h4>
+        <ul>
+          <li *ngFor="let comment of post.comments">
+            {{ comment.username }}: {{ comment.content }}
+          </li>
+        </ul>
+        <input [(ngModel)]="newComment[post.id]" placeholder="Add a comment">
+        <button (click)="addComment(post.id, 'User')">Comment</button>
+      </div>
+    </div>
+  </div>
+</div>
