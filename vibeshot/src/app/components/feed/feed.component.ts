@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PostService } from '../../services/post.service';
-import { Post } from '../../models/post.model';
-import { Router } from '@angular/router';
+
+interface Post {
+  id: number;
+  title: string;
+  content: string;
+  author: string;
+  likes: number;
+  comments: { username: string; content: string }[];
+}
 
 @Component({
   selector: 'app-feed',
@@ -13,41 +19,58 @@ export class FeedComponent implements OnInit {
   posts: Post[] = [];
   newComment: { [key: number]: string } = {};
   createPostForm: FormGroup;
+  
+  // Simulate a logged-in user
+  currentUser: string = 'RegisteredUser';
 
-  constructor(private router: Router, private postService: PostService, private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder) {
     this.createPostForm = this.formBuilder.group({
+      title: ['', Validators.required],
       content: ['', Validators.required]
     });
   }
 
   ngOnInit(): void {
-    this.postService.getPosts().subscribe(posts => {
-      this.posts = posts;
-    });
+    // Mock posts
+    this.posts = [
+      {
+        id: 1,
+        title: 'First Post',
+        content: 'This is the first post',
+        author: 'User1',
+        likes: 0,
+        comments: []
+      }
+    ];
   }
 
   likePost(postId: number): void {
-    this.postService.likePost(postId);
+    const post = this.posts.find(p => p.id === postId);
+    if (post) {
+      post.likes++;
+    }
   }
 
-  addComment(postId: number, author: string): void {
-    if (this.newComment[postId]) {
-      this.postService.addComment(postId, this.newComment[postId], author);
-      this.newComment[postId] = ''; // Clear the input after adding a comment
+  addComment(postId: number): void {
+    const post = this.posts.find(p => p.id === postId);
+    if (post && this.newComment[postId]) {
+      post.comments.push({ username: this.currentUser, content: this.newComment[postId] });
+      this.newComment[postId] = '';
     }
   }
 
   createPost(): void {
-    if (this.createPostForm.invalid) {
-      return;
+    if (this.createPostForm.valid) {
+      const newPost: Post = {
+        id: this.posts.length + 1,
+        title: this.createPostForm.value.title,
+        content: this.createPostForm.value.content,
+        author: this.currentUser,
+        likes: 0,
+        comments: []
+      };
+      this.posts.push(newPost);
+      this.createPostForm.reset();
     }
-
-  
-
-    const title = this.createPostForm.value.title;
-    const content = this.createPostForm.value.content;
-    const author = 'Current User'; // Replace with actual current user
-    this.postService.createPost(title, content, author);
-    this.createPostForm.reset(); // Clear the form after creating a post
   }
 }

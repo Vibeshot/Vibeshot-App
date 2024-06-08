@@ -1,8 +1,37 @@
+// import { Component, OnInit } from '@angular/core';
+// import { ProfileService } from '../../services/profile.service';
+// import { User } from '../../models/user';
+
+// @Component({
+//   selector: 'app-profile',
+//   templateUrl: './profile.component.html',
+//   styleUrls: ['./profile.component.css']
+// })
+// export class ProfileComponent implements OnInit {
+//   user: User | null = null;
+
+//   constructor(private profileService: ProfileService) {}
+
+//   ngOnInit() {
+//     const userId = '1'; // Replace with dynamic user ID
+//     this.profileService.getUserProfile(userId).subscribe(
+//       data => {
+//         this.user = data;
+//       },
+//       error => {
+//         console.error(error);
+//       }
+//     );
+//   }
+// }
+
 import { Component, OnInit } from '@angular/core';
-import { ProfileService } from '../../services/profile.service';
-import { Profile } from '../../models/profile.model';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+
+interface UserProfile {
+  username: string;
+  bio: string;
+  posts: { title: string; content: string }[];
+}
 
 @Component({
   selector: 'app-profile',
@@ -10,47 +39,17 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  profile!: Profile;
-  editProfileForm: FormGroup;
-  editMode: boolean = false;
-
-  constructor(private authService: AuthService, private profileService: ProfileService, private fb: FormBuilder) {
-    this.editProfileForm = this.fb.group({
-      name: ['', Validators.required],
-      bio: ['', Validators.required]
-    });
-  }
+  user: UserProfile = { username: '', bio: '', posts: [] };
 
   ngOnInit(): void {
-    this.profileService.getProfile().subscribe(profile => {
-      this.profile = profile;
-      this.editProfileForm.setValue({
-        name: profile.name,
-        bio: profile.bio
-      });
-    });
-  }
-
-  toggleEditMode(): void {
-    this.editMode = !this.editMode;
-  }
-
-  saveProfile(): void {
-    if (this.editProfileForm.valid) {
-      const updatedProfile: Profile = {
-        ...this.profile,
-        ...this.editProfileForm.value
-      };
-      this.profileService.updateProfile(updatedProfile);
-      this.profile = updatedProfile;
-      this.editMode = false;
-    }
-  }
-
-  likePost(postId: number): void {
-    const post = this.profile.posts.find(p => p.id === postId);
-    if (post) {
-      post.likes++;
-    }
+    // Mock user data
+    this.user = {
+      username: 'CurrentUser',
+      bio: 'This is the user bio',
+      posts: [
+        { title: 'First Post', content: 'This is the first post content' },
+        { title: 'Second Post', content: 'This is the second post content' }
+      ]
+    };
   }
 }

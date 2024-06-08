@@ -1,13 +1,143 @@
-.container {
-    max-width: 500px;
-    margin: 50px auto;
-  }
-  
-  .form-control.is-invalid {
-    border-color: #dc3545;
-  }
-  
-  .invalid-feedback {
-    color: #dc3545;
-  }
-  
+/* src/app/components/register/register.component.css */
+@import url('https://fonts.googleapis.com/css2?family=Oswald');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue');
+@import url('https://fonts.googleapis.com/css2?family=Honk');
+
+/* General Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+header, nav {
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Header Styles */
+.site-header {
+  top: 0;
+  background-color: var(--bg-color); /* Change as needed */
+  color: var(--text-color); /* Change as needed */
+  text-align: center;
+  padding: 10px 0;
+}
+
+.site-title {
+  margin: 0;
+  font-size: 24px;
+}
+
+/* Navigation Bar Styles */
+.tab-bar {
+  bottom: 0;
+  background-color: var(--bg-color); /* Change as needed */
+}
+
+.tab-bar__tabs {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tab-bar__tab {
+  flex: 1;
+  text-align: center;
+}
+
+.tab-bar__tab-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  text-decoration: none;
+  color: var(--text-color); /* Change as needed */
+}
+
+.tab-bar__tab-icon {
+  fill: var(--icon-color); /* Change as needed */
+  stroke: var(--icon-stroke); /* Change as needed */
+}
+
+.tab-bar__tab-link.active .tab-bar__tab-icon {
+  fill: var(--active-icon-color); /* Change as needed */
+  stroke: var(--active-icon-stroke); /* Change as needed */
+}
+
+.tab-bar__tab-name {
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Router Outlet Padding */
+router-outlet {
+  display: block;
+  padding-top: 60px; /* Height of the header */
+  padding-bottom: 60px; /* Height of the navigation bar */
+}
+
+/* Registration Form Styles */
+.registration-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin-top: 70px; /* To avoid overlap with the fixed header */
+}
+
+.registration-box {
+  max-width: 500px; /* Adjust the width as needed */
+  width: 100%;
+  background-color: #000000; /* Optional: Add a background color */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Center-align the text */
+}
+
+.registration-title {
+  margin: 0 0 20px 0;
+  font-size: 44px;
+  font-weight: bold;
+  font-family: 'Honk';
+}
+
+.registration-form {
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left; /* Align the labels and inputs to the left */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

@@ -1,11 +1,78 @@
-<nav>
-    <a routerLink="/register">Register</a>
-    <a routerLink="/login">Login</a>
-    <a routerLink="/feed">Feed</a>
-    <a routerLink="/profile">Profile</a>
-    <a routerLink="/dm">Messages</a>
-  </nav>
-  
-  <router-outlet></router-outlet>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <h1 class="site-title">Vibeshot</h1>
+    </header>
+    
+    <nav class="tab-bar">
+        <ul class="tab-bar__tabs">
+            <li class="tab-bar__tab">
+                <a class="tab-bar__tab-link" routerLink="/feed" routerLinkActive="active">
+                    <svg class="tab-bar__tab-icon tab-bar__tab-icon--feed" viewBox="0 0 24 24" width="24px" height="24px" aria-hidden="true">
+                        <g class="tab-bar__tab-icon-1" fill="var(--focus-t)" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+                            <polygon points="12 1,23 10,23 23,16 23,16 14,8 14,8 23,1 23,1 10" />
+                        </g>
+                    </svg>
+                    <span class="tab-bar__tab-name">Feed</span>
+                </a>
+            </li>
+            <li class="tab-bar__tab">
+                <a class="tab-bar__tab-link" routerLink="/register" routerLinkActive="active">
+                    <svg class="tab-bar__tab-icon tab-bar__tab-icon--register" viewBox="0 0 24 24" width="24px" height="24px" aria-hidden="true">
+                        <g fill="var(--focus-t)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5z"/>
+                            <path d="M19 21v-2c0-2.76-2.24-5-5-5h-2c-2.76 0-5 2.24-5 5v2"/>
+                            <path d="M15 8h4M17 6v4"/>
+                        </g>
+                    </svg>
+                    <span class="tab-bar__tab-name">Register</span>
+                </a>
+            </li>
+            <li class="tab-bar__tab">
+                <a class="tab-bar__tab-link" routerLink="/login" routerLinkActive="active">
+                    <svg class="tab-bar__tab-icon tab-bar__tab-icon--login" viewBox="0 0 24 24" width="24px" height="24px" aria-hidden="true">
+                        <g fill="var(--focus-t)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M15 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H15"/>
+                            <path d="M10 17L15 12L10 7"/>
+                            <path d="M15 12H3"/>
+                        </g>
+                    </svg>
+                    <span class="tab-bar__tab-name">Login</span>
+                </a>
+            </li>
+            <li class="tab-bar__tab">
+                <a class="tab-bar__tab-link" routerLink="/messages" routerLinkActive="active">
+                    <svg class="tab-bar__tab-icon tab-bar__tab-icon--messages" viewBox="0 0 24 24" width="24px" height="24px" aria-hidden="true">
+                        <g fill="var(--focus-t)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 11.5C21 16.1944 16.9715 20 12 20C10.5202 20 9.11461 19.6862 7.85989 19.1217L3 21L4.40462 17.1411C3.51986 15.8237 3 14.2211 3 12.5C3 7.80558 7.02848 4 12 4C16.9715 4 21 7.80558 21 12.5Z"/>
+                        </g>
+                    </svg>
+                    <span class="tab-bar__tab-name">Messages</span>
+                </a>
+            </li>
+            <li class="tab-bar__tab">
+                <a class="tab-bar__tab-link" routerLink="/profile" routerLinkActive="active">
+                    <svg class="tab-bar__tab-icon tab-bar__tab-icon--profile" viewBox="0 0 24 24" width="24px" height="24px" aria-hidden="true">
+                        <g fill="var(--focus-t)" stroke="currentColor" stroke-width="2">
+                            <circle class="tab-bar__tab-icon-1" cx="12" cy="6.5" r="5.5"/>
+                            <path d="M20.473,23H3.003c-1.276,0-2.228-1.175-1.957-2.422,.705-3.239,3.029-8.578,10.693-8.578s9.987,5.336,10.692,8.575c.272,1.248-.681,2.425-1.959,2.425Z"/>
+                        </g>
+                    </svg>
+                    <span class="tab-bar__tab-name">Profile</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 
-  
+    <router-outlet></router-outlet>
+
+    <script src="main.js"></script>
+</body>
+</html>
